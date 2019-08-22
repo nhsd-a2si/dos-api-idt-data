@@ -48,7 +48,9 @@ def post_data():
 def get_data_for_splunk():
     data = {
         "data": get_data()}
-    return jsonify(data)
+    resp = jsonify(data)
+    resp.headers['Cache-Control'] = 'no-cache'
+    return resp
 
 
 set_up_db()
